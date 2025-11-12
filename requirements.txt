@@ -1,0 +1,42 @@
+# requirements.txt
+# Blockflow Exchange - Python Dependencies
+
+# FastAPI & Server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.13.0
+
+# Validation
+pydantic==2.5.0
+pydantic-settings==2.1.0
+email-validator==2.1.0
+
+# Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.1
+
+# Utilities
+python-dotenv==1.0.0
+loguru==0.7.2
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Demo & Load Testing
+requests==2.31.0
+websockets==12.0
+locust==2.17.0
+
+# Optional (for production)
+redis==5.0.1
+sentry-sdgunicorn==21.2.0
+psycopg2-binary==2.9.9
+k==1.38.0
