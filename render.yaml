@@ -1,29 +1,25 @@
-# ─────────────────────────────────────────────
-# Blockflow Exchange - Render Blueprint
-# Version: 3.5
-# ─────────────────────────────────────────────
+# render.yaml
+# Render Blueprint for Blockflow FastAPI Backend
+
 services:
   - type: web
-    name: blockflow-api
+    name: blockflow-v3-backend
     env: docker
     plan: free
-    region: singapore
-
+    region: oregon
+    branch: main
+    autoDeploy: true
+    buildCommand: ""
+    startCommand: ""
+    healthCheckPath: /health
     envVars:
+      - key: DATABASE_URL
+        value: postgresql://blockflowv2_db_user:ugCjWRmTL1yGEuby5DwfTdMQ72vgbn50@dpg-d4afm1ili9vc73fh9o5g-a/blockflowv2_db
+      - key: JWT_SECRET
+        value: supersecretkeychangeinproduction1234567890
+      - key: ALLOWED_ORIGINS
+        value: '["https://blockflow.onrender.com","http://localhost:3000"]'
       - key: ENV
         value: production
       - key: DEMO_MODE
-        value: "true"
-      - key: DEBUG
-        value: "false"
-      - key: JWT_SECRET
-        sync: false
-      - key: SECRET_KEY
-        sync: false
-      - key: DATABASE_URL
-        fromDatabase:
-          name: blockflowv2-db
-          property: connectionString
-
-databases:
-  - name: blockflowv2-db
+        value: true

@@ -1,23 +1,31 @@
-# ─────────────────────────────────────────────
-# Blockflow Exchange - Render Deployment
-# Version: 3.5 (Production)
-# ─────────────────────────────────────────────
-FROM python:3.11-slim
+# Dockerfile
+# Blockflow Exchange - FastAPI + PostgreSQL (Render-ready)
 
+FROM python:3.11-slim-bullseye
+
+# Working directory
 WORKDIR /app
 
-# Upgrade pip and wheel for modern builds
-RUN pip install --upgrade pip setuptools wheel
+# Install dependencies
+RUN apt-get update && apt-get install -y gcc libpq-dev curl && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first to leverage Docker layer caching
+# Upgrade pip + wheel
+RUN python -m pip install --upgrade pip setuptools wheel
+
+# Copy requirements
 COPY requirements.txt .
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
+# Copy app code
 COPY . .
 
 # Expose port
 EXPOSE 8000
 
-# Start FastAPI via Gunicorn + Uvicorn worker
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "app.main:app", "--bind", "0.0.0.0:8000", "--workers", "4"]
+# Healthcheck (optional)
+HEALTHCHECK CMD curl --fail http://localhost:8000/health || exit 1
+
+# Start FastAPI app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

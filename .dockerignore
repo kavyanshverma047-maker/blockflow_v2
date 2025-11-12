@@ -1,13 +1,28 @@
+# .dockerignore
+# Ignore unnecessary files for build
+
 __pycache__/
 *.py[cod]
-.venv/
+*$py.class
+*.so
+.Python
 venv/
 env/
-.git/
-.gitignore
+.venv
+.vscode/
+.idea/
 logs/
 *.log
 *.db
+*.sqlite
+*.sqlite3
 .env
-__init__.pyc
-__init__.pyo
+.env.local
+.git/
+.gitignore
+.pytest_cache/
+.coverage
+htmlcov/
+docs/
+*.tmp
+.cache/

@@ -1,5 +1,5 @@
 # requirements.txt
-# Blockflow Exchange - Python Dependencies
+# Blockflow Exchange - Python Dependencies (Render Safe Final)
 
 # FastAPI & Server
 fastapi==0.104.1
@@ -37,6 +37,4 @@ locust==2.17.0
 
 # Optional (for production)
 redis==5.0.1
-sentry-sdk==1.38.0
-psycopg2-binary==2.9.9
-k==1.38.0
+sentry-sdk==1.39.2
