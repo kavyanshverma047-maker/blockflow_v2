@@ -44,6 +44,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from app.core import ws_manager
+from app.api import trade_router
 
 # Database
 from sqlalchemy import (
@@ -164,191 +166,15 @@ engine = create_engine(
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+from app.models import (
+    Base,
+    User, Order, Trade, Ledger,
+    TaxEntry, AuditLog,
+    UserRole, KYCStatus,
+    OrderStatus, OrderSide, OrderType
+)
 
-# ============================================================================
-# DATABASE MODELS
-# ============================================================================
 
-class UserRole(str, Enum):
-    USER = "user"
-    ADMIN = "admin"
-    COMPLIANCE = "compliance"
-
-class KYCStatus(str, Enum):
-    PENDING = "pending"
-    VERIFIED = "verified"
-    REJECTED = "rejected"
-
-class OrderStatus(str, Enum):
-    OPEN = "open"
-    PARTIAL = "partial"
-    FILLED = "filled"
-    CANCELLED = "cancelled"
-
-class OrderSide(str, Enum):
-    BUY = "buy"
-    SELL = "sell"
-
-class OrderType(str, Enum):
-    LIMIT = "limit"
-    MARKET = "market"
-
-class User(Base):
-    __tablename__ = "users"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(50), unique=True, nullable=False, index=True)
-    email = Column(String(255), unique=True, nullable=False, index=True)
-    password_hash = Column(String(255), nullable=False)
-    
-    role = Column(SQLEnum(UserRole), default=UserRole.USER)
-    
-    # KYC
-    kyc_status = Column(SQLEnum(KYCStatus), default=KYCStatus.PENDING)
-    pan_number = Column(String(10), unique=True, nullable=True)
-    aadhaar_last4 = Column(String(4), nullable=True)
-    full_name = Column(String(255), nullable=True)
-    kyc_verified_at = Column(DateTime(timezone=True), nullable=True)
-    
-    # Balances (use String to avoid float precision issues)
-    balance_inr = Column(String(20), default="0.00")
-    balance_usdt = Column(String(20), default="0.00")
-    balance_btc = Column(String(20), default="0.00000000")
-    balance_eth = Column(String(20), default="0.00000000")
-    
-    # Locked balances (reserved for open orders)
-    locked_inr = Column(String(20), default="0.00")
-    locked_usdt = Column(String(20), default="0.00")
-    locked_btc = Column(String(20), default="0.00000000")
-    locked_eth = Column(String(20), default="0.00000000")
-    
-    # Flags
-    is_active = Column(Boolean, default=True)
-    is_banned = Column(Boolean, default=False)
-    is_demo = Column(Boolean, default=False)
-    
-    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
-    updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
-    
-    __table_args__ = (Index('idx_user_email_active', 'email', 'is_active'),)
-
-class Order(Base):
-    __tablename__ = "orders"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, nullable=False, index=True)
-    
-    symbol = Column(String(20), nullable=False, index=True)
-    side = Column(SQLEnum(OrderSide), nullable=False)
-    order_type = Column(SQLEnum(OrderType), nullable=False)
-    status = Column(SQLEnum(OrderStatus), default=OrderStatus.OPEN, index=True)
-    
-    price = Column(String(20), nullable=True)
-    amount = Column(String(20), nullable=False)
-    filled_amount = Column(String(20), default="0.00000000")
-    remaining_amount = Column(String(20), nullable=False)
-    
-    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
-    updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
-    
-    __table_args__ = (
-        Index('idx_order_symbol_status', 'symbol', 'status'),
-        Index('idx_order_user_status', 'user_id', 'status'),
-    )
-
-class Trade(Base):
-    __tablename__ = "trades"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    
-    buy_order_id = Column(Integer, nullable=False, index=True)
-    sell_order_id = Column(Integer, nullable=False, index=True)
-    
-    symbol = Column(String(20), nullable=False, index=True)
-    price = Column(String(20), nullable=False)
-    amount = Column(String(20), nullable=False)
-    
-    buyer_id = Column(Integer, nullable=False, index=True)
-    seller_id = Column(Integer, nullable=False, index=True)
-    
-    buyer_fee = Column(String(20), default="0.00")
-    seller_fee = Column(String(20), default="0.00")
-    tds_amount_inr = Column(String(20), default="0.00")
-    
-    executed_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
-    
-    __table_args__ = (
-        Index('idx_trade_symbol_time', 'symbol', 'executed_at'),
-        Index('idx_trade_buyer', 'buyer_id', 'executed_at'),
-        Index('idx_trade_seller', 'seller_id', 'executed_at'),
-    )
-
-class Ledger(Base):
-    """Immutable audit log"""
-    __tablename__ = "ledger"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, nullable=False, index=True)
-    
-    entry_type = Column(String(30), nullable=False)
-    asset = Column(String(10), nullable=False)
-    
-    amount = Column(String(20), nullable=False)
-    balance_after = Column(String(20), nullable=False)
-    
-    related_id = Column(Integer, nullable=True)
-    metadata = Column(Text, nullable=True)
-    
-    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
-    
-    __table_args__ = (
-        Index('idx_ledger_user_time', 'user_id', 'created_at'),
-        Index('idx_ledger_type', 'entry_type', 'created_at'),
-    )
-
-class TaxEntry(Base):
-    """TDS tracking for Form 26QE"""
-    __tablename__ = "tax_entries"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    trade_id = Column(Integer, nullable=False, index=True)
-    user_id = Column(Integer, nullable=False, index=True)
-    
-    symbol = Column(String(20), nullable=False)
-    gross_value_crypto = Column(String(20), nullable=False)
-    gross_value_inr = Column(String(20), nullable=False)
-    fx_rate = Column(String(10), nullable=False)
-    
-    tds_rate = Column(String(10), default="0.0100")
-    tds_amount_inr = Column(String(20), nullable=False)
-    net_amount_inr = Column(String(20), nullable=False)
-    
-    quarter = Column(String(10), nullable=False, index=True)
-    form_26qe_filed = Column(Boolean, default=False)
-    form_26qe_date = Column(DateTime(timezone=True), nullable=True)
-    
-    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
-    
-    __table_args__ = (Index('idx_tax_quarter_user', 'quarter', 'user_id'),)
-
-class AuditLog(Base):
-    """Security audit trail"""
-    __tablename__ = "audit_logs"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, nullable=True, index=True)
-    request_id = Column(String(36), nullable=True)
-    
-    event_type = Column(String(50), nullable=False, index=True)
-    ip_address = Column(String(50), nullable=True)
-    user_agent = Column(String(255), nullable=True)
-    
-    details = Column(Text, nullable=True)
-    
-    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
-
-# Create tables
-Base.metadata.create_all(bind=engine)
 
 # ============================================================================
 # PYDANTIC SCHEMAS

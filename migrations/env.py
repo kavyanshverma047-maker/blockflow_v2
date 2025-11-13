@@ -6,6 +6,8 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 import os
 import sys
+from app.models import Base
+target_metadata = Base.metadata
 
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
