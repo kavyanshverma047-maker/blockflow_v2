@@ -72,6 +72,9 @@ import sys as logging_sys
 # Environment
 from dotenv import load_dotenv
 load_dotenv()
+import uuid
+from fastapi import Request
+
 
 # ============================================================================
 # CONFIGURATION & SETTINGS
@@ -129,16 +132,33 @@ request_id_var: ContextVar[str] = ContextVar('request_id', default='')
 
 logger.remove()
 logger.add(
-    logging_sys.stderr,
-    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <cyan>{extra[request_id]}</cyan> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>",
-    level="DEBUG" if settings.DEBUG else "INFO"
+    "logs/blockflow.log",
+
+    rotation="10 MB",
+    retention="14 days",
+    format="{time} | {level} | {extra[request_id]} | {message}"
 )
+
 logger.add(
     "logs/blockflow_{time}.log",
     rotation="500 MB",
     retention="10 days",
     level="INFO"
 )
+logger = logger.bind(request_id="-")
+
+def log_audit(user, event, data, request: Request, db: Session):
+    request_id = getattr(request.state, "request_id", None)
+
+    entry = AuditLog(
+        user_id=user.id if user else None,
+        event_type=event,
+        request_id=request_id,
+        details=data
+    )
+
+    db.add(entry)
+    db.commit()
 
 # ============================================================================
 # DATABASE SETUP
@@ -166,13 +186,24 @@ engine = create_engine(
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
-from app.models import (
+
+
+
+from app.db.models import (
     Base,
-    User, Order, Trade, Ledger,
-    TaxEntry, AuditLog,
-    UserRole, KYCStatus,
-    OrderStatus, OrderSide, OrderType
+    User,
+    Order,
+    Trade,
+    Ledger,
+    TaxEntry,
+    AuditLog,
+    OrderSide,
+    OrderType,
+    OrderStatus,
+    KYCStatus,
+    UserRole,
 )
+
 
 
 
@@ -201,7 +232,7 @@ class LoginRequest(BaseModel):
     password: str
 
 class PlaceOrderRequest(BaseModel):
-    symbol: str = Field(..., regex="^(BTC|ETH)(USDT|INR)$")
+    symbol: str = Field(..., pattern="^(BTC|ETH)(USDT|INR)$")
     side: OrderSide
     order_type: OrderType
     price: Optional[Decimal] = None
@@ -214,7 +245,8 @@ class PlaceOrderRequest(BaseModel):
         return v
 
 class DepositRequest(BaseModel):
-    asset: str = Field(..., regex="^(INR|USDT|BTC|ETH)$")
+    asset: str = Field(..., pattern="^(INR|USDT|BTC|ETH)$")
+
     amount: Decimal = Field(..., gt=0)
 
 # ============================================================================
@@ -224,37 +256,9 @@ class DepositRequest(BaseModel):
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
-def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
-
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
-
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
-    to_encode = data.copy()
-    expire = datetime.now(timezone.utc) + (expires_delta or timedelta(minutes=settings.JWT_EXPIRY_MINUTES))
-    to_encode.update({"exp": expire})
-    return jwt.encode(to_encode, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
-
-def decode_token(token: str) -> TokenData:
-    try:
-        payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
-        return TokenData(**payload)
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
-    except jwt.InvalidTokenError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
-
-async def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    db: Session = Depends(get_db)  # FIXED: Let FastAPI manage lifecycle
-) -> User:
-    """Dependency to get current authenticated user"""
-    token_data = decode_token(credentials.credentials)
-    user = db.query(User).filter(User.id == token_data.user_id).first()
-    if not user or not user.is_active:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
-    return user
+# ========================================================================
+# DATABASE DEPENDENCY
+# ========================================================================
 
 def get_db():
     db = SessionLocal()
@@ -262,6 +266,25 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+# ========================================================================
+# SECURITY & AUTH
+# ========================================================================
+
+async def get_current_user(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: Session = Depends(get_db)
+) -> User:
+    token_data = decode_token(credentials.credentials)
+
+    user = db.query(User).filter(User.id == token_data.user_id).first()
+    if not user or not user.is_active:
+        raise HTTPException(status_code=401, detail="User not found")
+
+    return user
+
+
 
 # ============================================================================
 # TDS CALCULATOR (WITH YTD TRACKING)
@@ -625,7 +648,13 @@ async def execute_trade(
     )
     db.add(trade)
     db.flush()
-    
+    logger.bind(
+    request_id="-",
+    symbol=trade.symbol,
+    price=trade.price,
+    quantity=trade.quantity
+    ).info(f"TRADE EXECUTED {trade.symbol} {trade.quantity} @ {trade.price}")
+
     # Update order statuses
     buy_order.filled_amount = str(Decimal(buy_order.filled_amount) + amount)
     buy_order.remaining_amount = str(Decimal(buy_order.amount) - Decimal(buy_order.filled_amount))
@@ -828,17 +857,62 @@ class ConnectionManager:
 
 ws_manager = ConnectionManager()
 
-# ============================================================================
+# ==========================================================
 # FASTAPI APP
-# ============================================================================
+# ==========================================================
 
 app = FastAPI(
     title="Blockflow Exchange API",
     description="Production-grade cryptocurrency exchange for India with auto-TDS",
-    version="3.5",
+    version="3.6",
     docs_url="/api/docs" if settings.DEBUG else None,
     redoc_url="/api/redoc" if settings.DEBUG else None
 )
+
+import uuid
+from fastapi import Request
+from time import time
+
+
+# ==========================================================
+# MIDDLEWARE: REQUEST TIMING
+# ==========================================================
+
+@app.middleware("http")
+async def log_request_timing(request: Request, call_next):
+    start = time()
+    response = await call_next(request)
+    duration_ms = round((time() - start) * 1000, 2)
+
+    logger.bind(
+        request_id=getattr(request.state, "request_id", "-"),
+        path=request.url.path,
+        duration_ms=duration_ms
+    ).info(
+        f"REQUEST {request.method} {request.url.path} completed in {duration_ms}ms"
+    )
+
+    return response
+
+
+# ==========================================================
+# MIDDLEWARE: ERROR HANDLING
+# ==========================================================
+
+@app.middleware("http")
+async def log_errors(request: Request, call_next):
+    try:
+        return await call_next(request)
+
+    except Exception as e:
+        logger.bind(
+            request_id=getattr(request.state, "request_id", "-"),
+            path=request.url.path,
+            error=str(e),
+        ).error("UNHANDLED ERROR")
+        raise e
+
+
 
 # ============================================================================
 # MIDDLEWARE
@@ -855,23 +929,7 @@ app.add_middleware(
 
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
-# Request logging with correlation ID
-@app.middleware("http")
-async def log_requests_with_correlation_id(request: Request, call_next):
-    req_id = str(uuid.uuid4())[:8]
-    request_id_var.set(req_id)
-    
-    start_time = datetime.now(timezone.utc)
-    logger.bind(request_id=req_id).info(f"→ {request.method} {request.url.path}")
-    
-    try:
-        response = await call_next(request)
-        duration = (datetime.now(timezone.utc) - start_time).total_seconds()
-        logger.bind(request_id=req_id).info(f"← {response.status_code} ({duration:.3f}s)")
-        return response
-    except Exception as e:
-        logger.bind(request_id=req_id).exception(f"Request failed: {e}")
-        raise
+
 
 # Rate limiting
 rate_limit_storage: Dict[str, List[float]] = {}
