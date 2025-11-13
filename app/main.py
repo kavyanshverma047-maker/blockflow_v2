@@ -1890,23 +1890,7 @@ async def get_public_stats(db: Session = Depends(get_db)):
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
-# ============================================================================
-# MAIN ENTRY
-# ============================================================================
-
-if __name__ == "__main__":
-    import uvicorn
-    
-    # FIXED: Correct module path for different project structures
-    # Use "app.main:app" if file is in app/ subdirectory
-    # Use "main:app" if file is at project root
-    uvicorn.run(
-        "main:app",  # Change to "app.main:app" if in subdirectory
-        host="0.0.0.0",
-        port=int(os.getenv("PORT", "8000")),
-        reload=settings.DEBUG,
-        log_level="info"
-    )
+ 
 
 """
 ============================================================================
