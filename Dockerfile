@@ -1,20 +1,30 @@
-# Use Python official image
+# ===========================
+# Blockflow v3.6 – Render Dockerfile
+# ===========================
+
 FROM python:3.10-slim
 
-# Work directory inside container
+# Create app directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y build-essential
+# Install OS compile deps
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy project files
-COPY . /app
-
-# Install Python dependencies
+# Copy app files
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port
+COPY . .
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1
+
+# Expose FastAPI port
 EXPOSE 10000
 
-# Start uvicorn server
+# Start FastAPI for Render
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "10000"]
