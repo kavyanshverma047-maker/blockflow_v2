@@ -1,0 +1,11 @@
+2025-11-13T17:17:33.185379+0530 | INFO | - | ================================================================================
+2025-11-13T17:17:33.185379+0530 | INFO | - | 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-13T17:17:33.185379+0530 | INFO | - | Environment: production
+2025-11-13T17:17:33.185379+0530 | INFO | - | Demo Mode: ENABLED ⚠️
+2025-11-13T17:17:33.185379+0530 | INFO | - | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-13T17:17:33.186380+0530 | INFO | - | ================================================================================
+2025-11-13T17:17:37.937784+0530 | INFO | - | ✅ Database connection successful
+2025-11-13T17:17:37.937784+0530 | INFO | - | ✅ Blockflow Exchange ready
+2025-11-13T17:21:45.829883+0530 | INFO | - | REQUEST GET / completed in 0.0ms
+2025-11-13T17:21:46.221036+0530 | INFO | - | REQUEST GET /favicon.ico completed in 0.0ms
+2025-11-13T17:25:18.614625+0530 | INFO | - | 🛑 Blockflow Exchange shutting down...
