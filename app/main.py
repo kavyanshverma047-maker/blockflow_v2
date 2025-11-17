@@ -878,11 +878,11 @@ ws_manager = ConnectionManager()
 
 app = FastAPI(
     title="Blockflow Exchange API",
-    description="Production-grade cryptocurrency exchange for India with auto-TDS",
-    version="3.6",
-    docs_url="/api/docs" if settings.DEBUG else None,
-    redoc_url="/api/redoc" if settings.DEBUG else None
+    version="3.5.9",
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
+
 # Include USDM Futures router
 app.include_router(futures_router, prefix="/api/futures")
 
