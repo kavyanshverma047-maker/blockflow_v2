@@ -1,0 +1,15 @@
+2025-11-17 15:52:40.624 | INFO     | app.main:startup_event:1014 - ================================================================================
+2025-11-17 15:52:40.624 | INFO     | app.main:startup_event:1015 - 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-17 15:52:40.624 | INFO     | app.main:startup_event:1016 - Environment: production
+2025-11-17 15:52:40.624 | INFO     | app.main:startup_event:1017 - Demo Mode: ENABLED ⚠️
+2025-11-17 15:52:40.624 | INFO     | app.main:startup_event:1018 - Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-17 15:52:40.624 | INFO     | app.main:startup_event:1019 - ================================================================================
+2025-11-17 15:52:45.376 | INFO     | app.main:startup_event:1025 - ✅ Database connection successful
+2025-11-17 15:52:45.376 | INFO     | app.main:startup_event:1041 - 🔁 WAL Replay Worker started
+2025-11-17 15:52:45.376 | INFO     | app.main:startup_event:1044 - 🔥 Futures price feed started
+2025-11-17 15:52:45.376 | INFO     | app.main:startup_event:1066 - 🚀 Futures engine linked with price feed
+2025-11-17 15:52:45.376 | INFO     | app.main:startup_event:1068 - ✅ Blockflow Exchange ready
+2025-11-17 15:52:45.376 | INFO     | app.futures.price_feed:start:80 - Price feed started
+2025-11-17 15:55:51.656 | INFO     | app.main:log_request_timing:908 - REQUEST GET /docs completed in 1.0ms
+2025-11-17 15:55:51.962 | INFO     | app.main:log_request_timing:908 - REQUEST GET /favicon.ico completed in 1.0ms
+2025-11-17 15:57:39.924 | INFO     | app.main:shutdown_event:1073 - 🛑 Blockflow Exchange shutting down...

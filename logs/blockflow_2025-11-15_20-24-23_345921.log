@@ -1,0 +1,7 @@
+2025-11-15 20:24:23.366 | INFO     | app.main:startup_event:1011 - ================================================================================
+2025-11-15 20:24:23.367 | INFO     | app.main:startup_event:1012 - 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-15 20:24:23.367 | INFO     | app.main:startup_event:1013 - Environment: production
+2025-11-15 20:24:23.367 | INFO     | app.main:startup_event:1014 - Demo Mode: ENABLED ⚠️
+2025-11-15 20:24:23.367 | INFO     | app.main:startup_event:1015 - Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-15 20:24:23.367 | INFO     | app.main:startup_event:1016 - ================================================================================
+2025-11-15 20:24:28.384 | INFO     | app.main:startup_event:1022 - ✅ Database connection successful

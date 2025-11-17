@@ -9,3 +9,61 @@
 2025-11-13T17:21:45.829883+0530 | INFO | - | REQUEST GET / completed in 0.0ms
 2025-11-13T17:21:46.221036+0530 | INFO | - | REQUEST GET /favicon.ico completed in 0.0ms
 2025-11-13T17:25:18.614625+0530 | INFO | - | 🛑 Blockflow Exchange shutting down...
+2025-11-15T20:24:23.366685+0530 | INFO | - | ================================================================================
+2025-11-15T20:24:23.367684+0530 | INFO | - | 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-15T20:24:23.367684+0530 | INFO | - | Environment: production
+2025-11-15T20:24:23.367684+0530 | INFO | - | Demo Mode: ENABLED ⚠️
+2025-11-15T20:24:23.367684+0530 | INFO | - | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-15T20:24:23.367684+0530 | INFO | - | ================================================================================
+2025-11-15T20:24:28.384653+0530 | INFO | - | ✅ Database connection successful
+2025-11-15T20:42:45.902697+0530 | INFO | - | ================================================================================
+2025-11-15T20:42:45.902697+0530 | INFO | - | 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-15T20:42:45.902697+0530 | INFO | - | Environment: production
+2025-11-15T20:42:45.902697+0530 | INFO | - | Demo Mode: ENABLED ⚠️
+2025-11-15T20:42:45.902697+0530 | INFO | - | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-15T20:42:45.902697+0530 | INFO | - | ================================================================================
+2025-11-15T20:42:50.708246+0530 | INFO | - | ✅ Database connection successful
+2025-11-15T20:42:50.708246+0530 | INFO | - | 🔁 WAL Replay Worker started
+2025-11-15T20:42:50.708246+0530 | INFO | - | 🔥 Futures price feed started
+2025-11-15T20:42:50.708246+0530 | INFO | - | 🚀 Futures engine linked with price feed
+2025-11-15T20:42:50.708246+0530 | INFO | - | ✅ Blockflow Exchange ready
+2025-11-17T15:13:17.707458+0530 | INFO | - | ================================================================================
+2025-11-17T15:13:17.707458+0530 | INFO | - | 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-17T15:13:17.708459+0530 | INFO | - | Environment: production
+2025-11-17T15:13:17.708459+0530 | INFO | - | Demo Mode: ENABLED ⚠️
+2025-11-17T15:13:17.708459+0530 | INFO | - | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-17T15:13:17.708459+0530 | INFO | - | ================================================================================
+2025-11-17T15:13:22.340571+0530 | INFO | - | ✅ Database connection successful
+2025-11-17T15:13:22.340571+0530 | INFO | - | 🔁 WAL Replay Worker started
+2025-11-17T15:13:22.340571+0530 | INFO | - | 🔥 Futures price feed started
+2025-11-17T15:13:22.340571+0530 | INFO | - | 🚀 Futures engine linked with price feed
+2025-11-17T15:13:22.340571+0530 | INFO | - | ✅ Blockflow Exchange ready
+2025-11-17T15:13:36.516760+0530 | INFO | - | 🛑 Blockflow Exchange shutting down...
+2025-11-17T15:52:40.624394+0530 | INFO | ================================================================================ | -
+2025-11-17T15:52:40.624394+0530 | INFO | 🚀 Blockflow Exchange v3.5 Starting... | -
+2025-11-17T15:52:40.624394+0530 | INFO | Environment: production | -
+2025-11-17T15:52:40.624394+0530 | INFO | Demo Mode: ENABLED ⚠️ | -
+2025-11-17T15:52:40.624394+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | -
+2025-11-17T15:52:40.624394+0530 | INFO | ================================================================================ | -
+2025-11-17T15:52:45.376346+0530 | INFO | ✅ Database connection successful | -
+2025-11-17T15:52:45.376346+0530 | INFO | 🔁 WAL Replay Worker started | -
+2025-11-17T15:52:45.376346+0530 | INFO | 🔥 Futures price feed started | -
+2025-11-17T15:52:45.376346+0530 | INFO | 🚀 Futures engine linked with price feed | -
+2025-11-17T15:52:45.376346+0530 | INFO | ✅ Blockflow Exchange ready | -
+2025-11-17T15:55:51.656447+0530 | INFO | REQUEST GET /docs completed in 1.0ms | -
+2025-11-17T15:55:51.962536+0530 | INFO | REQUEST GET /favicon.ico completed in 1.0ms | -
+2025-11-17T15:57:39.924606+0530 | INFO | 🛑 Blockflow Exchange shutting down... | -
+2025-11-17T15:57:40.746620+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-17T15:57:40.747622+0530 | INFO | 🚀 Blockflow Exchange v3.5 Starting... | {'request_id': '-'}
+2025-11-17T15:57:40.747622+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-17T15:57:40.747622+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-17T15:57:40.747622+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-17T15:57:40.747622+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-17T15:57:45.697217+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-17T15:57:45.697217+0530 | INFO | 🔁 WAL Replay Worker started | {'request_id': '-'}
+2025-11-17T15:57:45.697217+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-17T15:57:45.697217+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-17T15:57:45.697217+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-17T15:57:45.697217+0530 | INFO | Price feed started | {}
+2025-11-17T15:58:06.366473+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '-', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-17T15:59:50.775332+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}

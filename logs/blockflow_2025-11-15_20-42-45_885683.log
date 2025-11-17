@@ -1,0 +1,12 @@
+2025-11-15 20:42:45.902 | INFO     | app.main:startup_event:1013 - ================================================================================
+2025-11-15 20:42:45.902 | INFO     | app.main:startup_event:1014 - 🚀 Blockflow Exchange v3.5 Starting...
+2025-11-15 20:42:45.902 | INFO     | app.main:startup_event:1015 - Environment: production
+2025-11-15 20:42:45.902 | INFO     | app.main:startup_event:1016 - Demo Mode: ENABLED ⚠️
+2025-11-15 20:42:45.902 | INFO     | app.main:startup_event:1017 - Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-15 20:42:45.902 | INFO     | app.main:startup_event:1018 - ================================================================================
+2025-11-15 20:42:50.708 | INFO     | app.main:startup_event:1024 - ✅ Database connection successful
+2025-11-15 20:42:50.708 | INFO     | app.main:startup_event:1040 - 🔁 WAL Replay Worker started
+2025-11-15 20:42:50.708 | INFO     | app.main:startup_event:1043 - 🔥 Futures price feed started
+2025-11-15 20:42:50.708 | INFO     | app.main:startup_event:1065 - 🚀 Futures engine linked with price feed
+2025-11-15 20:42:50.708 | INFO     | app.main:startup_event:1067 - ✅ Blockflow Exchange ready
+2025-11-15 20:42:50.708 | INFO     | app.futures.price_feed:start:80 - Price feed started

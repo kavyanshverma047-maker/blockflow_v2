@@ -75,6 +75,18 @@ load_dotenv()
 import uuid
 from fastapi import Request
 
+from app.futures.price_feed import price_feed
+
+from app.futures.demo_engine import demo_engine
+
+from app.futures.wal import WALReplayWorker
+
+
+from app.core.dependencies import get_db, get_current_user
+from app.futures import futures_router
+
+
+
 
 # ============================================================================
 # CONFIGURATION & SETTINGS
@@ -136,7 +148,8 @@ logger.add(
 
     rotation="10 MB",
     retention="14 days",
-    format="{time} | {level} | {extra[request_id]} | {message}"
+    format="{time} | {level} | {message} | {extra}"
+
 )
 
 logger.add(
@@ -203,6 +216,8 @@ from app.db.models import (
     KYCStatus,
     UserRole,
 )
+
+
 
 
 
@@ -868,6 +883,8 @@ app = FastAPI(
     docs_url="/api/docs" if settings.DEBUG else None,
     redoc_url="/api/redoc" if settings.DEBUG else None
 )
+# Include USDM Futures router
+app.include_router(futures_router, prefix="/api/futures")
 
 import uuid
 from fastapi import Request
@@ -1011,11 +1028,45 @@ async def startup_event():
         raise
     
     # Start background tasks
-    asyncio.create_task(heartbeat_task())
     if settings.DEMO_MODE:
         asyncio.create_task(update_market_prices())
+
+    # ---- FUTURES PRICE FEED ----
     
-    logger.info("✅ Blockflow Exchange ready")
+    
+    
+
+    # WAL WORKER
+   
+    logger.info("🔁 WAL Replay Worker started")
+
+    asyncio.create_task(price_feed.start())
+    logger.info("🔥 Futures price feed started")
+
+    # Price tick processor
+    async def process_price_tick(data):
+        symbol = data["symbol"]
+        mark_price = Decimal(data["mark_price"])
+
+        # Demo engine TP/SL & Liquidation
+        if demo_engine:
+            tpsl_events = await demo_engine.check_tpsl_triggers(symbol, mark_price)
+            for event in tpsl_events:
+                await ws_manager.broadcast({"type": "tpsl_trigger", **event})
+
+            liq_events = await demo_engine.check_liquidations(symbol, mark_price)
+            for event in liq_events:
+                await ws_manager.broadcast({"type": "liquidation", **event})
+
+        # Always broadcast price updates
+        await ws_manager.broadcast({"type": "price_update", **data})
+
+    # Subscribe processor
+    price_feed.subscribe(process_price_tick)
+    logger.info("🚀 Futures engine linked with price feed")
+
+    logger.info("✅ Blockflow Exchange ready")   # KEEP THIS
+
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -1788,6 +1839,68 @@ async def websocket_user(websocket: WebSocket, user_id: int):
         await ws_manager.disconnect(websocket)
         logger.info(f"WebSocket user disconnected: {user_id}")
 
+# ======================================================================
+# FUTURES WEBSOCKET ENDPOINT
+# ======================================================================
+@app.websocket("/ws/futures/{symbol}")
+async def websocket_futures(websocket: WebSocket, symbol: str):
+    await ws_manager.connect(websocket)
+    await ws_manager.subscribe(websocket, symbol)
+    logger.info(f"WS connected for futures: {symbol}")
+
+    # Initial snapshot
+    current_price = price_feed.get_current_price(symbol)
+    if current_price:
+        await websocket.send_json({
+            "type": "price_snapshot",
+            "symbol": symbol,
+            "mark_price": str(current_price),
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        })
+
+    try:
+        while True:
+            try:
+                msg = await asyncio.wait_for(websocket.receive_text(), timeout=30.0)
+                data = json.loads(msg)
+
+                if data.get("action") == "subscribe":
+                    new_symbol = data.get("symbol")
+                    if new_symbol:
+                        await ws_manager.subscribe(websocket, new_symbol)
+
+            except asyncio.TimeoutError:
+                await websocket.send_json({"type": "ping"})
+    except WebSocketDisconnect:
+        await ws_manager.disconnect(websocket)
+        logger.info(f"WS disconnected for futures: {symbol}")
+@app.websocket("/ws/futures/roe/{user_id}")
+async def websocket_futures_roe(websocket: WebSocket, user_id: int):
+    await ws_manager.connect(websocket)
+
+    try:
+        while True:
+            positions = await demo_engine.get_user_positions(user_id)
+            for pos in positions:
+                try:
+                    used_equity = (pos.entry_price * pos.qty) / max(pos.leverage, 1)
+                    roe = (pos.unrealized_pnl / used_equity) * 100 if used_equity > 0 else 0
+                except:
+                    roe = 0
+
+
+                await websocket.send_json({
+                    "symbol": pos.symbol,
+                    "roe": float(roe),
+                    "u_pnl": float(pos.unrealized_pnl)
+                })
+
+            await asyncio.sleep(0.5)
+
+    except WebSocketDisconnect:
+        await ws_manager.disconnect(websocket)
+
+
 # ============================================================================
 # BACKGROUND TASKS
 # ============================================================================
@@ -1850,6 +1963,19 @@ async def get_config():
             "tds_rate": str(settings.TDS_RATE)
         }
     }
+@app.get("/api/futures-status")
+async def futures_status():
+    return {
+        "mode": os.getenv("APP_MODE", "demo"),
+        "feed_running": getattr(price_feed, "running", True),
+        "symbols": list(price_feed.prices.keys()),
+        "funding_rates": {
+            symbol: str(price_feed.get_funding_rate(symbol))
+            for symbol in price_feed.prices.keys()
+        },
+        "demo_positions": len(getattr(demo_engine, "positions", {}))
+    }
+
 
 @app.get("/api/market/fx-rate")
 async def get_fx_rate():
