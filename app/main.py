@@ -1113,38 +1113,31 @@ async def get_demo_status():
 # ============================================================================
 # API ROUTES - AUTHENTICATION
 # ============================================================================
-
 @app.post("/api/auth/register")
-async def register(request: RegisterRequest, db: Session = Depends(get_db)):
-    req_id = request_id_var.get()
-    
-    existing = db.query(User).filter(
-        (User.username == request.username) | (User.email == request.email)
-    ).first()
-    
-    if existing:
-        raise HTTPException(status_code=400, detail="Username or email already exists")
-    
-    user = User(
-        username=request.username,
-        email=request.email,
-        password_hash=hash_password(request.password),
-        balance_inr="10000.00" if settings.DEMO_MODE else "0.00",
-        balance_usdt="1000.00000000" if settings.DEMO_MODE else "0.00000000",
-        is_demo=settings.DEMO_MODE
-    )
-    
-    db.add(user)
-    db.commit()
-    db.refresh(user)
-    
-    db.add(AuditLog(
-        user_id=user.id,
-        request_id=req_id,
-        event_type="user_registered",
-        details=json.dumps({"username": user.username})
-    ))
-    db.commit()
+def register(user: UserCreate, db: Session = Depends(get_db)):
+    try:
+        # check if email exists
+        existing = db.query(User).filter(User.email == user.email).first()
+        if existing:
+            raise HTTPException(status_code=400, detail="Email already registered")
+
+        hashed_password = pwd_context.hash(user.password)
+
+        new_user = User(
+            username=user.username,
+            email=user.email,
+            hashed_password=hashed_password
+        )
+
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+
+        return {"message": "User created successfully"}
+
+    except Exception as e:
+        print("REGISTER ERROR:", str(e))
+        raise HTTPException(status_code=500, detail="Internal server error")
     
     token = create_access_token({
         "user_id": user.id,
@@ -2016,7 +2009,26 @@ async def get_public_stats(db: Session = Depends(get_db)):
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
- 
+# ==========================================
+# WARNING: ADMIN ONLY — DROP & RECREATE DB
+# ==========================================
+from fastapi import Depends
+from app.db.session import engine, Base
+from sqlalchemy import text
+
+@app.post("/admin/reset-db")
+async def reset_db():
+    # DROP ALL TABLES
+    Base.metadata.drop_all(bind=engine)
+
+    # RE-CREATE ALL TABLES
+    Base.metadata.create_all(bind=engine)
+
+    return {
+        "status": "success",
+        "message": "Database wiped + recreated successfully"
+    }
+
 
 """
 ============================================================================
