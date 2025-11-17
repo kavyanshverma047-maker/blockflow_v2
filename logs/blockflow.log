@@ -67,3 +67,16 @@
 2025-11-17T15:57:45.697217+0530 | INFO | Price feed started | {}
 2025-11-17T15:58:06.366473+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '-', 'path': '/docs', 'duration_ms': 1.0}
 2025-11-17T15:59:50.775332+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-17T22:52:18.025036+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-17T22:52:18.025036+0530 | INFO | 🚀 Blockflow Exchange v3.5 Starting... | {'request_id': '-'}
+2025-11-17T22:52:18.025036+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-17T22:52:18.025036+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-17T22:52:18.025036+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-17T22:52:18.025036+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-17T22:52:23.104769+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-17T22:52:23.104769+0530 | INFO | 🔁 WAL Replay Worker started | {'request_id': '-'}
+2025-11-17T22:52:23.104769+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-17T22:52:23.104769+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-17T22:52:23.104769+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-17T22:52:23.104769+0530 | INFO | Price feed started | {}
+2025-11-17T22:53:25.335084+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}

@@ -80,6 +80,8 @@ from app.futures.price_feed import price_feed
 from app.futures.demo_engine import demo_engine
 
 from app.futures.wal import WALReplayWorker
+from app.schemas import UserCreate, UserLogin, UserOut
+
 
 
 from app.core.dependencies import get_db, get_current_user
