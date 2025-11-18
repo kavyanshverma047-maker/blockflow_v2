@@ -80,3 +80,643 @@
 2025-11-17T22:52:23.104769+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
 2025-11-17T22:52:23.104769+0530 | INFO | Price feed started | {}
 2025-11-17T22:53:25.335084+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T16:41:31.737769+0530 | INFO | Demo engine initialized | {}
+2025-11-18T16:41:31.760437+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:41:31.761436+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:41:31.761436+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:41:31.761436+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:41:31.761436+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:41:31.773236+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T16:41:31.773236+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T16:41:31.773236+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T16:41:31.773236+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T16:41:31.773236+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T16:41:31.773740+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T16:41:36.614880+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T16:41:36.615881+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T16:41:36.615881+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T16:41:36.615881+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T16:41:36.615881+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T16:41:36.615881+0530 | INFO | Price feed started | {}
+2025-11-18T16:42:01.920390+0530 | INFO | REQUEST GET /docs completed in 2.0ms | {'request_id': '5316e77e-a103-4435-bf18-ad0752ba20e0', 'path': '/docs', 'duration_ms': 2.0}
+2025-11-18T16:42:02.252196+0530 | INFO | REQUEST GET /openapi.json completed in 22.76ms | {'request_id': '04fc1066-fc63-4a1a-90fd-a11da15f8415', 'path': '/openapi.json', 'duration_ms': 22.76}
+2025-11-18T16:42:18.750751+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.pan_number AS users_pan_number, users.aadhaar_last4 AS users_aadhaar_last4, users.full_name AS users_full_name, users.kyc_verified_at AS users_kyc_verified_at, users.balance_inr AS users_balance_inr, users.balance_usdt AS users_balance_usdt, users.balance_btc AS users_balance_btc, users.balance_eth AS users_balance_eth, users.locked_inr AS users_locked_inr, users.locked_usdt AS users_locked_usdt, users.locked_btc AS users_locked_btc, users.locked_eth AS users_locked_eth, users.is_active AS users_is_active, users.is_banned AS users_is_banned, users.is_demo AS users_is_demo, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test1@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T16:42:19.032391+0530 | INFO | REQUEST POST /api/auth/register completed in 1141.14ms | {'request_id': '422b2ae9-c8fb-499c-9fee-a7f6300e7950', 'path': '/api/auth/register', 'duration_ms': 1141.14}
+2025-11-18T16:43:21.179895+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T16:43:22.023146+0530 | INFO | Demo engine initialized | {}
+2025-11-18T16:43:22.033382+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:22.033382+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:22.033382+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:22.033382+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:22.034382+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:22.043897+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T16:43:22.043897+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T16:43:22.043897+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T16:43:22.043897+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T16:43:22.043897+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T16:43:22.043897+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T16:43:27.188513+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T16:43:27.188513+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T16:43:27.188513+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T16:43:27.188513+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T16:43:27.188513+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T16:43:27.188513+0530 | INFO | Price feed started | {}
+2025-11-18T16:43:27.189513+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T16:43:30.785452+0530 | INFO | Demo engine initialized | {}
+2025-11-18T16:43:30.796002+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:30.796002+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:30.796504+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:30.796504+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:30.796504+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T16:43:30.806287+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T16:43:30.806287+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T16:43:30.806287+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T16:43:30.806287+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T16:43:30.806287+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T16:43:30.807291+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T16:43:35.435191+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T16:43:35.435191+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T16:43:35.435191+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T16:43:35.435191+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T16:43:35.436195+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T16:43:35.436195+0530 | INFO | Price feed started | {}
+2025-11-18T16:43:35.575831+0530 | INFO | REQUEST GET /docs completed in 1.5ms | {'request_id': '7dc566c8-f58a-4544-abb8-408ca5a1393b', 'path': '/docs', 'duration_ms': 1.5}
+2025-11-18T16:43:35.883883+0530 | INFO | REQUEST GET /openapi.json completed in 9.39ms | {'request_id': 'b0a29e57-b56b-406d-a1f5-42b9c14faf4e', 'path': '/openapi.json', 'duration_ms': 9.39}
+2025-11-18T16:43:51.710923+0530 | INFO | REQUEST POST /api/auth/register completed in 1.0ms | {'request_id': '27119161-aa65-4c86-b475-2b805694ab6d', 'path': '/api/auth/register', 'duration_ms': 1.0}
+2025-11-18T16:45:02.950327+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.pan_number AS users_pan_number, users.aadhaar_last4 AS users_aadhaar_last4, users.full_name AS users_full_name, users.kyc_verified_at AS users_kyc_verified_at, users.balance_inr AS users_balance_inr, users.balance_usdt AS users_balance_usdt, users.balance_btc AS users_balance_btc, users.balance_eth AS users_balance_eth, users.locked_inr AS users_locked_inr, users.locked_usdt AS users_locked_usdt, users.locked_btc AS users_locked_btc, users.locked_eth AS users_locked_eth, users.is_active AS users_is_active, users.is_banned AS users_is_banned, users.is_demo AS users_is_demo, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test1@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T16:45:03.209959+0530 | INFO | REQUEST POST /api/auth/register completed in 1053.63ms | {'request_id': 'da84eba4-4020-429b-9134-a212d6382028', 'path': '/api/auth/register', 'duration_ms': 1053.63}
+2025-11-18T16:51:17.347248+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T17:01:51.406728+0530 | INFO | Demo engine initialized | {}
+2025-11-18T17:01:51.416738+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T17:01:51.416738+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T17:01:51.417738+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T17:01:51.417738+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T17:01:51.417738+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T17:01:51.427532+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T17:01:51.427532+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T17:01:51.427532+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T17:01:51.428532+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T17:01:51.428532+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T17:01:51.428532+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T17:01:56.547797+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T17:01:56.547797+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T17:01:56.547797+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T17:01:56.547797+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T17:01:56.547797+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T17:01:56.548812+0530 | INFO | Price feed started | {}
+2025-11-18T17:01:56.688776+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '4b8b267a-0aad-486c-bda4-91d7ce75d382', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T17:01:56.955972+0530 | INFO | REQUEST GET /openapi.json completed in 10.52ms | {'request_id': '9cbf6161-c376-470f-bdfd-bc6d9ec94aea', 'path': '/openapi.json', 'duration_ms': 10.52}
+2025-11-18T17:02:21.127449+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.pan_number AS users_pan_number, users.aadhaar_last4 AS users_aadhaar_last4, users.full_name AS users_full_name, users.kyc_verified_at AS users_kyc_verified_at, users.balance_inr AS users_balance_inr, users.balance_usdt AS users_balance_usdt, users.balance_btc AS users_balance_btc, users.balance_eth AS users_balance_eth, users.locked_inr AS users_locked_inr, users.locked_usdt AS users_locked_usdt, users.locked_btc AS users_locked_btc, users.locked_eth AS users_locked_eth, users.is_active AS users_is_active, users.is_banned AS users_is_banned, users.is_demo AS users_is_demo, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test1@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T17:02:21.407361+0530 | INFO | REQUEST POST /api/auth/register completed in 1126.48ms | {'request_id': '0f1389b4-c979-4ae1-a3b4-6d2c67a5baa7', 'path': '/api/auth/register', 'duration_ms': 1126.48}
+2025-11-18T17:02:48.609484+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:09:20.904890+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:10:03.017128+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:12:06.661109+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:12:06.670109+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:06.671109+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:06.671109+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:06.671109+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:06.671109+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:06.681364+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:12:06.682364+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:12:06.682364+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:12:06.682364+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:12:06.682364+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:12:06.682364+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:12:11.419728+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:12:11.420728+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:12:11.420728+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:12:11.420728+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:12:11.420728+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:12:11.420728+0530 | INFO | Price feed started | {}
+2025-11-18T18:12:13.244599+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:12:48.995498+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:12:49.004498+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:49.004498+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:49.004498+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:49.004498+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:49.006001+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:12:49.016005+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:12:49.016005+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:12:49.016005+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:12:49.016005+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:12:49.017006+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:12:49.017006+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:12:53.654851+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:12:53.654851+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:12:53.654851+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:12:53.654851+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:12:53.654851+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:12:53.654851+0530 | INFO | Price feed started | {}
+2025-11-18T18:14:13.572067+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '8a1e863c-7839-4c00-9d49-dcf289ff1399', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T18:14:13.832111+0530 | INFO | REQUEST GET /openapi.json completed in 9.0ms | {'request_id': '002a1f71-921b-45c9-a6ff-0189afa86331', 'path': '/openapi.json', 'duration_ms': 9.0}
+2025-11-18T18:14:50.023133+0530 | INFO | REQUEST POST /api/auth/register completed in 5.0ms | {'request_id': '853c5738-d054-411a-8e87-83d5c32e8262', 'path': '/api/auth/register', 'duration_ms': 5.0}
+2025-11-18T18:15:29.517898+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T18:15:29.775913+0530 | INFO | REQUEST POST /api/auth/register completed in 1044.72ms | {'request_id': 'e683ffad-465b-4399-80d7-34c1faaac361', 'path': '/api/auth/register', 'duration_ms': 1044.72}
+2025-11-18T18:18:32.889035+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:18:37.710348+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:18:37.720351+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:18:37.720351+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:18:37.720351+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:18:37.720351+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:18:37.721351+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:18:37.731049+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:18:37.731049+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:18:37.731049+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:18:37.731049+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:18:37.731049+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:18:37.731049+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:18:42.710503+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:18:42.710503+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:18:42.710503+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:18:42.711506+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:18:42.711506+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:18:42.711506+0530 | INFO | Price feed started | {}
+2025-11-18T18:22:15.853377+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T18:22:16.259498+0530 | INFO | REQUEST POST /api/auth/register completed in 1266.12ms | {'request_id': 'f3e842a2-ff6f-49c5-8db5-25e2044ee97e', 'path': '/api/auth/register', 'duration_ms': 1266.12}
+2025-11-18T18:22:16.302809+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:22:17.064506+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:23:35.644079+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:24:52.940706+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:30:44.791611+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:33:07.735125+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:33:07.755632+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:07.756632+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:07.756632+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:07.756632+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:07.756632+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:07.766596+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:33:07.767596+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:33:07.767596+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:33:07.767596+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:33:07.767596+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:33:07.767596+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:33:12.553748+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:33:12.553748+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:33:12.553748+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:33:12.553748+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:33:12.553748+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:33:12.554753+0530 | INFO | Price feed started | {}
+2025-11-18T18:33:12.558755+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '8a8e3d68-37f8-47fb-ae73-50e3c92863b8', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T18:33:12.889186+0530 | INFO | REQUEST GET /openapi.json completed in 9.0ms | {'request_id': '37e03324-6954-425d-9303-e5e7d21d9c79', 'path': '/openapi.json', 'duration_ms': 9.0}
+2025-11-18T18:33:21.604465+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:33:28.400329+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:33:28.408324+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:28.408324+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:28.409323+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:28.409323+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:28.409323+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:33:28.419430+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:33:28.419430+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:33:28.419430+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:33:28.419430+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:33:28.419430+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:33:28.419430+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:33:33.302606+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:33:33.303606+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:33:33.303606+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:33:33.303606+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:33:33.303606+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:33:33.303606+0530 | INFO | Price feed started | {}
+2025-11-18T18:35:03.314933+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T18:35:03.589336+0530 | INFO | REQUEST POST /api/auth/register completed in 1102.93ms | {'request_id': '5f498720-01fd-412a-99fb-53e57a25f49b', 'path': '/api/auth/register', 'duration_ms': 1102.93}
+2025-11-18T18:36:25.435706+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:36:28.635114+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:36:28.644115+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:36:28.644115+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:36:28.644115+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:36:28.644115+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:36:28.644115+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:36:28.655117+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:36:28.655117+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:36:28.655117+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:36:28.655117+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:36:28.655117+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:36:28.655117+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:36:33.739806+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:36:33.739806+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:36:33.739806+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:36:33.739806+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:36:33.739806+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:36:33.739806+0530 | INFO | Price feed started | {}
+2025-11-18T18:36:37.480531+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': 'd17d695b-6a3d-48cf-88ce-77ee3b9712e3', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T18:36:37.741154+0530 | INFO | REQUEST GET /openapi.json completed in 9.06ms | {'request_id': '8d5bc407-dcec-4f3d-8fe3-0dcce83e26cc', 'path': '/openapi.json', 'duration_ms': 9.06}
+2025-11-18T18:37:23.293795+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T18:37:23.565697+0530 | INFO | REQUEST POST /api/auth/register completed in 1097.25ms | {'request_id': '10b3bac9-f6e8-434f-bb77-0d3a40a142e2', 'path': '/api/auth/register', 'duration_ms': 1097.25}
+2025-11-18T18:41:07.847036+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:43:32.762272+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:43:32.770816+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:43:32.770816+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:43:32.771817+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:43:32.771817+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:43:32.771817+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:43:32.781611+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:43:32.782611+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:43:32.782611+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:43:32.782611+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:43:32.782611+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:43:32.782611+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:43:37.883479+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:43:37.883479+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:43:37.883479+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:43:37.884480+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:43:37.884480+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:43:37.884480+0530 | INFO | Price feed started | {}
+2025-11-18T18:45:14.120736+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:45:37.923611+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:45:37.932626+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:45:37.932626+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:45:37.932626+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:45:37.933626+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:45:37.933626+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:45:37.943127+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:45:37.943127+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:45:37.943127+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:45:37.943127+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:45:37.943127+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:45:37.944127+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:45:42.787534+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:45:42.787534+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:45:42.787534+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:45:42.787534+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:45:42.787534+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:45:42.787534+0530 | INFO | Price feed started | {}
+2025-11-18T18:45:43.035078+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '67ec5759-74f5-42a3-9b0a-b9bd96b1be07', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T18:45:43.330319+0530 | INFO | REQUEST GET /openapi.json completed in 8.37ms | {'request_id': 'a282ccf6-87bc-4a9f-970c-5bfdd0ba1387', 'path': '/openapi.json', 'duration_ms': 8.37}
+2025-11-18T18:46:34.323778+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T18:46:34.587608+0530 | INFO | REQUEST POST /api/auth/register completed in 1077.49ms | {'request_id': '8a727eed-44db-4c66-9054-513c1e7cc496', 'path': '/api/auth/register', 'duration_ms': 1077.49}
+2025-11-18T18:55:37.215340+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T18:55:37.986661+0530 | INFO | Demo engine initialized | {}
+2025-11-18T18:55:37.994492+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:55:37.995492+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:55:37.995492+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:55:37.995492+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:55:37.995492+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T18:55:38.005503+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:55:38.005503+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T18:55:38.005503+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T18:55:38.005503+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T18:55:38.006504+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T18:55:38.006504+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T18:55:42.983430+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T18:55:42.984433+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T18:55:42.984433+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T18:55:42.984433+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T18:55:42.984433+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T18:55:42.984433+0530 | INFO | Price feed started | {}
+2025-11-18T18:55:54.816239+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T19:08:53.034556+0530 | INFO | Demo engine initialized | {}
+2025-11-18T19:08:53.044556+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:08:53.044556+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:08:53.044556+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:08:53.044556+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:08:53.044556+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:08:53.053490+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T19:08:53.053490+0530 | INFO | 🚀 Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T19:08:53.053490+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T19:08:53.053490+0530 | INFO | Demo Mode: ENABLED ⚠️ | {'request_id': '-'}
+2025-11-18T19:08:53.053490+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T19:08:53.053490+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T19:08:57.927086+0530 | INFO | ✅ Database connection successful | {'request_id': '-'}
+2025-11-18T19:08:57.927086+0530 | INFO | 📊 Demo market price simulator started | {'request_id': '-'}
+2025-11-18T19:08:57.927086+0530 | INFO | 🔥 Futures price feed started | {'request_id': '-'}
+2025-11-18T19:08:57.927086+0530 | INFO | 🚀 Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T19:08:57.927086+0530 | INFO | ✅ Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T19:08:57.927086+0530 | INFO | Price feed started | {}
+2025-11-18T19:09:34.973864+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'kav', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T19:09:35.243884+0530 | INFO | REQUEST POST /api/auth/register completed in 1088.04ms | {'request_id': '4c5a74a4-9b9a-4307-bae3-8d9515dc1867', 'path': '/api/auth/register', 'duration_ms': 1088.04}
+2025-11-18T19:13:28.331408+0530 | INFO | 🛑 Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T19:13:43.619143+0530 | INFO | Demo engine initialized | {}
+2025-11-18T19:15:34.933210+0530 | INFO | Demo engine initialized | {}
+2025-11-18T19:15:34.985230+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.885783+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.885783+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.886783+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.886783+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.886783+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.886783+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:39:57.898290+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T19:39:57.898290+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T19:39:57.898290+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T19:39:57.898290+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T19:39:57.899794+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T19:39:57.899794+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T19:40:02.919601+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T19:40:02.919601+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T19:40:02.919601+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T19:40:02.919601+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T19:40:02.919601+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T19:42:49.724317+0530 | INFO | REQUEST GET /api/auth/register completed in 1.0ms | {'request_id': '08e8b991-dcbc-40df-8598-b0fdf1ed0ba5', 'path': '/api/auth/register', 'duration_ms': 1.0}
+2025-11-18T19:42:50.098732+0530 | INFO | REQUEST GET /favicon.ico completed in 1.0ms | {'request_id': '5f65f579-2d94-4b2f-a424-0e89e1c7fabe', 'path': '/favicon.ico', 'duration_ms': 1.0}
+2025-11-18T19:43:11.045210+0530 | INFO | REQUEST GET /docs completed in 0.0ms | {'request_id': '16e3086e-d87f-484d-a120-4d2c08009811', 'path': '/docs', 'duration_ms': 0.0}
+2025-11-18T19:43:11.129231+0530 | INFO | REQUEST GET /openapi.json completed in 6.0ms | {'request_id': 'c8fa79af-a7f3-4212-86ca-aaf314603889', 'path': '/openapi.json', 'duration_ms': 6.0}
+2025-11-18T19:44:14.312461+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 't1@gmail.com', 'username_1': 'test1', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T19:44:14.585770+0530 | INFO | REQUEST POST /api/auth/register completed in 1105.35ms | {'request_id': '61c46667-fd8a-4c5c-9356-887a234e5d74', 'path': '/api/auth/register', 'duration_ms': 1105.35}
+2025-11-18T19:45:41.836273+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T19:45:59.416565+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:45:59.418070+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:45:59.418070+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:45:59.418070+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:45:59.418070+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:45:59.418070+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.540530+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.540530+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.540530+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.540530+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.540530+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.540530+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T19:53:32.549293+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T19:53:32.549293+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T19:53:32.549293+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T19:53:32.549293+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T19:53:32.549293+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T19:53:32.549293+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T19:53:37.499540+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T19:53:37.499540+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T19:53:37.499540+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T19:53:37.499540+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T19:53:37.499540+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T19:53:38.714833+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': '32440d6c-b9e6-4433-8528-db8c6e177817', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T19:53:38.977495+0530 | INFO | REQUEST GET /openapi.json completed in 5.52ms | {'request_id': '87a768c0-dce5-4908-acdc-2c478113dd92', 'path': '/openapi.json', 'duration_ms': 5.52}
+2025-11-18T19:54:28.691431+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T19:54:29.001489+0530 | INFO | REQUEST POST /api/auth/register completed in 1142.23ms | {'request_id': '7c1e50ac-68d6-464d-8147-9e26f0cb7f97', 'path': '/api/auth/register', 'duration_ms': 1142.23}
+2025-11-18T19:54:39.907505+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'username_1': 'string', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T19:54:40.180228+0530 | INFO | REQUEST POST /api/auth/register completed in 1085.17ms | {'request_id': '7de607e7-cea2-4b00-a786-fd3f051f3319', 'path': '/api/auth/register', 'duration_ms': 1085.17}
+2025-11-18T19:54:45.154262+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'username_1': 'string', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T19:54:45.448999+0530 | INFO | REQUEST POST /api/auth/register completed in 1108.49ms | {'request_id': 'd192db95-49e4-436b-8233-ea92d41fd9cf', 'path': '/api/auth/register', 'duration_ms': 1108.49}
+2025-11-18T19:55:04.830451+0530 | INFO | REQUEST POST /api/auth/register completed in 1.0ms | {'request_id': '6fb80686-ef61-4661-bf12-2078651d452d', 'path': '/api/auth/register', 'duration_ms': 1.0}
+2025-11-18T19:55:06.897021+0530 | INFO | REQUEST POST /api/auth/register completed in 1.0ms | {'request_id': 'db69bac3-c646-4d5a-9675-973771a2ba11', 'path': '/api/auth/register', 'duration_ms': 1.0}
+2025-11-18T19:55:07.057776+0530 | INFO | REQUEST POST /api/auth/register completed in 1.5ms | {'request_id': 'df2cf261-5943-45b0-9230-256f8a64f4cb', 'path': '/api/auth/register', 'duration_ms': 1.5}
+2025-11-18T19:56:41.044679+0530 | INFO | REQUEST GET /docs completed in 1.0ms | {'request_id': 'd300e3b8-9582-4af9-b191-4eac8615142a', 'path': '/docs', 'duration_ms': 1.0}
+2025-11-18T19:56:41.202194+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T20:06:00.111765+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:00.111765+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:00.111765+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:00.111765+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:00.112273+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:00.112273+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:00.120051+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:06:00.120051+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T20:06:00.120051+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T20:06:00.120051+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T20:06:00.120051+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T20:06:00.121554+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:06:05.207691+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T20:06:05.207691+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T20:06:05.208691+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T20:06:05.208691+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T20:06:05.208691+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T20:06:05.644345+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T20:06:44.538293+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:44.538293+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:44.538293+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:44.538293+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:44.538293+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:44.538293+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:06:44.547310+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:06:44.547310+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T20:06:44.547310+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T20:06:44.547310+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T20:06:44.547310+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T20:06:44.547310+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:06:49.653783+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T20:06:49.653783+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T20:06:49.654863+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T20:06:49.654863+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T20:06:49.654863+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T20:06:54.167098+0530 | INFO | REQUEST GET /docs completed in 0.0ms | {'request_id': '252c5548-9fd7-4347-9081-43beccc9f203', 'path': '/docs', 'duration_ms': 0.0}
+2025-11-18T20:06:54.479815+0530 | INFO | REQUEST GET /openapi.json completed in 9.41ms | {'request_id': '4ab2dff8-50b8-4762-9158-b4f3e62d7d37', 'path': '/openapi.json', 'duration_ms': 9.41}
+2025-11-18T20:07:43.847757+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T20:07:44.636672+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:07:44.637672+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:07:44.637672+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:07:44.637672+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:07:44.637672+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:07:44.637672+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:07:44.646448+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:07:44.646448+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T20:07:44.646448+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T20:07:44.646448+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T20:07:44.646448+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T20:07:44.646448+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:07:49.424878+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T20:07:49.425881+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T20:07:49.425881+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T20:07:49.425881+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T20:07:49.425881+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T20:08:17.034900+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T20:08:17.304457+0530 | INFO | REQUEST POST /api/auth/register completed in 1094.49ms | {'request_id': '8d44a158-bc31-4996-964a-4184cf54a55e', 'path': '/api/auth/register', 'duration_ms': 1094.49}
+2025-11-18T20:09:55.304577+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T20:09:58.912925+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:09:58.912925+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:09:58.912925+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:09:58.912925+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:09:58.913929+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:09:58.913929+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:09:58.921223+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:09:58.921223+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T20:09:58.921223+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T20:09:58.921223+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T20:09:58.921223+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T20:09:58.921223+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:10:03.628312+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T20:10:03.628312+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T20:10:03.628312+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T20:10:03.628312+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T20:10:03.628312+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T20:10:04.625975+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T20:10:04.892682+0530 | INFO | REQUEST POST /api/auth/register completed in 1068.69ms | {'request_id': '4290cda2-765f-46c7-9633-61ea25ab1a30', 'path': '/api/auth/register', 'duration_ms': 1068.69}
+2025-11-18T20:11:21.972083+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T20:14:04.903676+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:14:04.903676+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:14:04.903676+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:14:04.903676+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:14:04.903676+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:14:04.903676+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:14:04.912781+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:14:04.912781+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T20:14:04.912781+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T20:14:04.912781+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T20:14:04.912781+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T20:14:04.912781+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:14:09.740327+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T20:14:09.740327+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T20:14:09.740327+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T20:14:09.740327+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T20:14:09.740327+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T20:14:26.628918+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T20:14:26.895709+0530 | INFO | REQUEST POST /api/auth/register completed in 1099.08ms | {'request_id': '17bc13c5-4ef5-44ab-b88b-fde6064fce07', 'path': '/api/auth/register', 'duration_ms': 1099.08}
+2025-11-18T20:17:18.854040+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}
+2025-11-18T20:17:22.239680+0530 | WARNING | app.api.trade_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:17:22.239680+0530 | WARNING | app.auth.auth_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:17:22.239680+0530 | WARNING | app.wallet.wallet_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:17:22.239680+0530 | WARNING | app.market.market_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:17:22.239680+0530 | WARNING | app.admin.admin_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:17:22.240680+0530 | WARNING | app.public.public_router not found, using inline routes | {'request_id': '-'}
+2025-11-18T20:17:22.248538+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:17:22.248538+0530 | INFO |  Blockflow Exchange v3.5.1 Starting... | {'request_id': '-'}
+2025-11-18T20:17:22.248538+0530 | INFO | Environment: production | {'request_id': '-'}
+2025-11-18T20:17:22.248538+0530 | INFO | Demo Mode: ENABLED  | {'request_id': '-'}
+2025-11-18T20:17:22.248538+0530 | INFO | Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require | {'request_id': '-'}
+2025-11-18T20:17:22.248538+0530 | INFO | ================================================================================ | {'request_id': '-'}
+2025-11-18T20:17:27.052177+0530 | INFO |  Database connection successful | {'request_id': '-'}
+2025-11-18T20:17:27.053177+0530 | INFO |  Demo market price simulator started | {'request_id': '-'}
+2025-11-18T20:17:27.053177+0530 | INFO |  Futures price feed started | {'request_id': '-'}
+2025-11-18T20:17:27.053177+0530 | INFO |  Futures engine linked with price feed | {'request_id': '-'}
+2025-11-18T20:17:27.053177+0530 | INFO |  Blockflow Exchange ready | {'request_id': '-'}
+2025-11-18T20:17:35.061198+0530 | ERROR | REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405) | {'request_id': '-'}
+2025-11-18T20:17:35.330184+0530 | INFO | REQUEST POST /api/auth/register completed in 1121.56ms | {'request_id': '862f81ff-1d59-4e0c-9412-0cae89bd4be3', 'path': '/api/auth/register', 'duration_ms': 1121.56}
+2025-11-18T20:18:31.511895+0530 | INFO |  Blockflow Exchange shutting down... | {'request_id': '-'}

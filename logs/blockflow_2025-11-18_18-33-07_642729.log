@@ -1,0 +1,21 @@
+2025-11-18 18:33:07.735 | INFO     | app.futures.demo_engine:__init__:87 - Demo engine initialized
+2025-11-18 18:33:07.755 | WARNING  | app.main:<module>:903 - app.auth.auth_router not found, using inline routes
+2025-11-18 18:33:07.756 | WARNING  | app.main:<module>:910 - app.wallet.wallet_router not found, using inline routes
+2025-11-18 18:33:07.756 | WARNING  | app.main:<module>:917 - app.market.market_router not found, using inline routes
+2025-11-18 18:33:07.756 | WARNING  | app.main:<module>:924 - app.admin.admin_router not found, using inline routes
+2025-11-18 18:33:07.756 | WARNING  | app.main:<module>:931 - app.public.public_router not found, using inline routes
+2025-11-18 18:33:07.766 | INFO     | app.main:startup_event:1074 - ================================================================================
+2025-11-18 18:33:07.767 | INFO     | app.main:startup_event:1075 - 🚀 Blockflow Exchange v3.5.1 Starting...
+2025-11-18 18:33:07.767 | INFO     | app.main:startup_event:1076 - Environment: production
+2025-11-18 18:33:07.767 | INFO     | app.main:startup_event:1077 - Demo Mode: ENABLED ⚠️
+2025-11-18 18:33:07.767 | INFO     | app.main:startup_event:1078 - Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-18 18:33:07.767 | INFO     | app.main:startup_event:1079 - ================================================================================
+2025-11-18 18:33:12.553 | INFO     | app.main:startup_event:1085 - ✅ Database connection successful
+2025-11-18 18:33:12.553 | INFO     | app.main:startup_event:1093 - 📊 Demo market price simulator started
+2025-11-18 18:33:12.553 | INFO     | app.main:startup_event:1097 - 🔥 Futures price feed started
+2025-11-18 18:33:12.553 | INFO     | app.main:startup_event:1119 - 🚀 Futures engine linked with price feed
+2025-11-18 18:33:12.553 | INFO     | app.main:startup_event:1121 - ✅ Blockflow Exchange ready
+2025-11-18 18:33:12.554 | INFO     | app.futures.price_feed:start:80 - Price feed started
+2025-11-18 18:33:12.558 | INFO     | app.main:log_request_timing:969 - REQUEST GET /docs completed in 1.0ms
+2025-11-18 18:33:12.889 | INFO     | app.main:log_request_timing:969 - REQUEST GET /openapi.json completed in 9.0ms
+2025-11-18 18:33:21.604 | INFO     | app.main:shutdown_event:1125 - 🛑 Blockflow Exchange shutting down...

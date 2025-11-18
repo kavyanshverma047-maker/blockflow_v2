@@ -1,209 +1,208 @@
-"""
-Futures Trading Models - Database Schema
-========================================
-SQLAlchemy models for USDM Futures trading system.
-"""
-
-from sqlalchemy import Column, Integer, String, Numeric, Boolean, DateTime, Enum as SQLEnum, Index, ForeignKey, Text
-from datetime import datetime, timezone
+# app/futures/models.py
+from sqlalchemy import (
+    Column, Integer, String, Numeric, Enum as SQLEnum,
+    Boolean, DateTime, ForeignKey, Text, func, Index
+)
+from sqlalchemy.orm import relationship
 from enum import Enum
-from app.db.models import Base
+from decimal import Decimal
+from app.database import Base
 
-# Enums
+
+# -------------------------
+# ENUMS
+# -------------------------
 class PositionSide(str, Enum):
-    LONG = "LONG"
-    SHORT = "SHORT"
+    LONG = "long"
+    SHORT = "short"
+
 
 class PositionStatus(str, Enum):
-    OPEN = "OPEN"
-    CLOSED = "CLOSED"
-    LIQUIDATED = "LIQUIDATED"
+    OPEN = "open"
+    CLOSED = "closed"
+    LIQUIDATED = "liquidated"
 
-class FuturesOrderType(str, Enum):
-    MARKET = "MARKET"
-    LIMIT = "LIMIT"
-    STOP_MARKET = "STOP_MARKET"
-    STOP_LIMIT = "STOP_LIMIT"
-    TAKE_PROFIT = "TAKE_PROFIT"
-    TAKE_PROFIT_MARKET = "TAKE_PROFIT_MARKET"
 
 class FuturesOrderSide(str, Enum):
-    BUY = "BUY"
-    SELL = "SELL"
+    BUY = "buy"
+    SELL = "sell"
+
+
+class FuturesOrderType(str, Enum):
+    MARKET = "market"
+    LIMIT = "limit"
+
 
 class FuturesOrderStatus(str, Enum):
-    PENDING = "PENDING"
-    OPEN = "OPEN"
-    FILLED = "FILLED"
-    PARTIAL = "PARTIAL"
-    CANCELLED = "CANCELLED"
-    REJECTED = "REJECTED"
-    TRIGGERED = "TRIGGERED"
+    OPEN = "open"
+    PARTIAL = "partial"
+    FILLED = "filled"
+    CANCELLED = "cancelled"
+
 
 class FuturesLedgerType(str, Enum):
-    MARGIN_LOCKED = "MARGIN_LOCKED"
-    MARGIN_RELEASED = "MARGIN_RELEASED"
-    REALIZED_PNL = "REALIZED_PNL"
-    FUNDING_FEE = "FUNDING_FEE"
-    TRADING_FEE = "TRADING_FEE"
-    LIQUIDATION_FEE = "LIQUIDATION_FEE"
-    POSITION_OPENED = "POSITION_OPENED"
-    POSITION_CLOSED = "POSITION_CLOSED"
+    MARGIN_RELEASED = "margin_released"
+    REALIZED_PNL = "realized_pnl"
+    LIQUIDATION_FEE = "liquidation_fee"
+    TRADING_FEE = "trading_fee"
 
-# Models
-class FuturesPosition(Base):
-    """Open futures position"""
-    __tablename__ = "futures_positions"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-    symbol = Column(String(20), nullable=False, index=True)  # BTCUSDT, ETHUSDT
-    side = Column(SQLEnum(PositionSide), nullable=False)
-    status = Column(SQLEnum(PositionStatus), nullable=False, default=PositionStatus.OPEN, index=True)
-    
-    # Position details
-    entry_price = Column(Numeric(20, 8), nullable=False)
-    quantity = Column(Numeric(20, 8), nullable=False)  # Number of contracts
-    leverage = Column(Integer, nullable=False)  # 1-125x
-    
-    # Margin
-    initial_margin = Column(Numeric(20, 8), nullable=False)  # Locked collateral
-    maintenance_margin = Column(Numeric(20, 8), nullable=False)  # Min margin to avoid liquidation
-    
-    # PnL tracking
-    unrealized_pnl = Column(Numeric(20, 8), nullable=False, default=0)
-    realized_pnl = Column(Numeric(20, 8), nullable=False, default=0)
-    
-    # Risk management
-    liquidation_price = Column(Numeric(20, 8), nullable=False)
-    take_profit_price = Column(Numeric(20, 8), nullable=True)
-    stop_loss_price = Column(Numeric(20, 8), nullable=True)
-    
-    # Fees
-    open_fee = Column(Numeric(20, 8), nullable=False, default=0)
-    close_fee = Column(Numeric(20, 8), nullable=False, default=0)
-    funding_fees_paid = Column(Numeric(20, 8), nullable=False, default=0)
-    
-    # Metadata / flags
-    is_reduce_only = Column(Boolean, default=False)
-    is_demo = Column(Boolean, default=False, index=True)
-    
-    # Timestamps
-    opened_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc))
-    closed_at = Column(DateTime(timezone=True), nullable=True)
-    last_updated = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
-    
-    # Indexes
-    __table_args__ = (
-        Index('idx_user_status', 'user_id', 'status'),
-        Index('idx_symbol_status', 'symbol', 'status'),
-        Index('idx_demo_status', 'is_demo', 'status'),
-    )
 
+# -------------------------
+# FUTURES ORDERS
+# -------------------------
 class FuturesOrder(Base):
-    """Futures order (including TP/SL orders)"""
     __tablename__ = "futures_orders"
-    
+
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-    position_id = Column(Integer, ForeignKey("futures_positions.id"), nullable=True, index=True)
-    
-    symbol = Column(String(20), nullable=False, index=True)
+    user_id = Column(Integer, nullable=False, index=True)
+    symbol = Column(String, nullable=False, index=True)
+
     side = Column(SQLEnum(FuturesOrderSide), nullable=False)
     order_type = Column(SQLEnum(FuturesOrderType), nullable=False)
-    status = Column(SQLEnum(FuturesOrderStatus), nullable=False, default=FuturesOrderStatus.PENDING, index=True)
-    
-    # Order details
-    price = Column(Numeric(20, 8), nullable=True)  # Null for market orders
-    trigger_price = Column(Numeric(20, 8), nullable=True)  # For stop/TP orders
-    quantity = Column(Numeric(20, 8), nullable=False)
-    filled_quantity = Column(Numeric(20, 8), nullable=False, default=0)
-    
-    # Flags
-    is_reduce_only = Column(Boolean, default=False)
-    is_tp_order = Column(Boolean, default=False)
-    is_sl_order = Column(Boolean, default=False)
-    is_demo = Column(Boolean, default=False, index=True)
-    
-    # Execution
-    filled_price = Column(Numeric(20, 8), nullable=True)
-    fee = Column(Numeric(20, 8), nullable=False, default=0)
-    
-    # Timestamps
-    created_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc), index=True)
-    filled_at = Column(DateTime(timezone=True), nullable=True)
-    cancelled_at = Column(DateTime(timezone=True), nullable=True)
-    
-    __table_args__ = (
-        Index('idx_user_symbol', 'user_id', 'symbol'),
-        Index('idx_position_status', 'position_id', 'status'),
-    )
+    status = Column(SQLEnum(FuturesOrderStatus), nullable=False, default=FuturesOrderStatus.OPEN)
 
-class FuturesLedger(Base):
-    """Futures ledger for all margin/PnL movements"""
-    __tablename__ = "futures_ledger"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-    position_id = Column(Integer, ForeignKey("futures_positions.id"), nullable=True, index=True)
-    order_id = Column(Integer, ForeignKey("futures_orders.id"), nullable=True)
-    
-    entry_type = Column(SQLEnum(FuturesLedgerType), nullable=False, index=True)
-    asset = Column(String(10), nullable=False, default="USDT")
-    
-    # Amount (+ or -)
-    amount = Column(Numeric(20, 8), nullable=False)
-    balance_after = Column(Numeric(20, 8), nullable=False)
-    
-    # Context
-    related_price = Column(Numeric(20, 8), nullable=True)
-    meta_info = Column(Text, nullable=True)  # JSON / extra context (renamed from 'metadata')
-    
-    created_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc), index=True)
-    
-    __table_args__ = (
-        Index('idx_user_type_created', 'user_id', 'entry_type', 'created_at'),
-    )
+    price = Column(Numeric(30, 10), nullable=True)
+    quantity = Column(Numeric(30, 10), nullable=False)
+    filled_quantity = Column(Numeric(30, 10), default=Decimal("0"))
 
-class FuturesLiquidation(Base):
-    """Liquidation events"""
-    __tablename__ = "futures_liquidations"
-    
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, onupdate=func.now())
+
+    # optional relation placeholders (if you want)
+    # trades = relationship("FuturesTrade", back_populates="order")
+
+
+# -------------------------
+# FUTURES TRADES
+# -------------------------
+class FuturesTrade(Base):
+    __tablename__ = "futures_trades"
+
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-    position_id = Column(Integer, ForeignKey("futures_positions.id"), nullable=False, index=True)
-    
-    symbol = Column(String(20), nullable=False)
+    buy_order_id = Column(Integer, ForeignKey("futures_orders.id"), nullable=True)
+    sell_order_id = Column(Integer, ForeignKey("futures_orders.id"), nullable=True)
+
+    symbol = Column(String, nullable=False, index=True)
+    price = Column(Numeric(30, 10), nullable=False)
+    quantity = Column(Numeric(30, 10), nullable=False)
+
+    buyer_id = Column(Integer, nullable=True)
+    seller_id = Column(Integer, nullable=True)
+
+    buyer_fee = Column(Numeric(30, 10), default=Decimal("0"))
+    seller_fee = Column(Numeric(30, 10), default=Decimal("0"))
+
+    tds_amount_inr = Column(String, nullable=True)
+
+    executed_at = Column(DateTime, server_default=func.now())
+
+
+# -------------------------
+# FUTURES POSITIONS
+# -------------------------
+class FuturesPosition(Base):
+    __tablename__ = "futures_positions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, nullable=False, index=True)
+
+    symbol = Column(String, nullable=False, index=True)
     side = Column(SQLEnum(PositionSide), nullable=False)
-    
-    # Liquidation details
-    entry_price = Column(Numeric(20, 8), nullable=False)
-    liquidation_price = Column(Numeric(20, 8), nullable=False)
-    quantity = Column(Numeric(20, 8), nullable=False)
-    
-    # Loss
-    loss_amount = Column(Numeric(20, 8), nullable=False)
-    liquidation_fee = Column(Numeric(20, 8), nullable=False)
-    
-    # Trigger
-    trigger_price = Column(Numeric(20, 8), nullable=False)  # Actual mark price that triggered liquidation
-    
-    is_demo = Column(Boolean, default=False)
-    liquidated_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc), index=True)
 
-class FuturesWAL(Base):
-    """Write-Ahead Log for rate-limited DB writes"""
-    __tablename__ = "futures_wal"
-    
+    leverage = Column(Integer, default=1)
+    entry_price = Column(Numeric(30, 10), nullable=False)
+    quantity = Column(Numeric(30, 10), nullable=False)
+
+    # margins/fees
+    initial_margin = Column(Numeric(30, 10), default=Decimal("0"))
+    maintenance_margin = Column(Numeric(30, 10), default=Decimal("0"))
+    funding_fees_paid = Column(Numeric(30, 10), default=Decimal("0"))
+    open_fee = Column(Numeric(30, 10), default=Decimal("0"))
+    close_fee = Column(Numeric(30, 10), default=Decimal("0"))
+
+    # PNL
+    unrealized_pnl = Column(Numeric(30, 10), default=Decimal("0"))
+    realized_pnl = Column(Numeric(30, 10), default=Decimal("0"))
+
+    # TP/SL fields (stored as strings to avoid Decimal issues when null)
+    take_profit_price = Column(String, nullable=True)
+    stop_loss_price = Column(String, nullable=True)
+
+    liquidation_price = Column(Numeric(30, 10), nullable=True)
+
+    status = Column(SQLEnum(PositionStatus), default=PositionStatus.OPEN)
+    is_demo = Column(Boolean, default=True)
+
+    created_at = Column(DateTime, server_default=func.now())
+    closed_at = Column(DateTime, nullable=True)
+
+
+# -------------------------
+# FUTURES LIQUIDATIONS
+# -------------------------
+class FuturesLiquidation(Base):
+    __tablename__ = "futures_liquidations"
+
     id = Column(Integer, primary_key=True, index=True)
-    idempotency_key = Column(String(64), nullable=False, unique=True, index=True)
-    
-    operation = Column(String(50), nullable=False)  # create_position, update_pnl, close_position, etc.
-    payload = Column(Text, nullable=False)  # JSON
-    
-    status = Column(String(20), nullable=False, default="PENDING", index=True)  # PENDING, APPLIED, FAILED
-    retry_count = Column(Integer, nullable=False, default=0)
-    
-    created_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc), index=True)
-    applied_at = Column(DateTime(timezone=True), nullable=True)
-    error_message = Column(Text, nullable=True)
+    user_id = Column(Integer, nullable=False, index=True)
+    position_id = Column(Integer, nullable=False, index=True)
+
+    symbol = Column(String, nullable=False)
+    side = Column(String)
+
+    entry_price = Column(String)
+    liquidation_price = Column(String)
+    quantity = Column(String)
+
+    loss_amount = Column(String)
+    liquidation_fee = Column(String)
+    trigger_price = Column(String)
+
+    is_demo = Column(Boolean, default=True)
+    liquidated_at = Column(DateTime, server_default=func.now())
+
+
+# -------------------------
+# FUTURES LEDGER
+# -------------------------
+class FuturesLedger(Base):
+    __tablename__ = "futures_ledger"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, nullable=False, index=True)
+    position_id = Column(Integer, nullable=False, index=True)
+
+    entry_type = Column(SQLEnum(FuturesLedgerType), nullable=False)
+
+    asset = Column(String, default="USDT")
+    amount = Column(Numeric(30, 10))
+    balance_after = Column(Numeric(30, 10))
+
+    related_price = Column(Numeric(30, 10))
+
+    # metadata is a reserved attr name in Declarative; expose DB column as "metadata" but Python attr as details
+    details = Column("metadata", Text)
+
+    created_at = Column(DateTime, server_default=func.now())
+
+# -------------------------
+# FUTURES WAL (Write-Ahead Log)
+# -------------------------
+class FuturesWAL(Base):
+    __tablename__ = "futures_wal"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    idempotency_key = Column(String, unique=True, nullable=False, index=True)
+    operation = Column(String, nullable=False)
+    payload = Column(Text, nullable=False)
+
+    status = Column(String, default="PENDING")  # PENDING | DONE | FAILED
+    retry_count = Column(Integer, default=0)
+
+    created_at = Column(DateTime, server_default=func.now())
+
+# Indexes helpers (optional)
+Index("ix_futures_positions_user_symbol", FuturesPosition.user_id, FuturesPosition.symbol)
+Index("ix_futures_orders_user_symbol", FuturesOrder.user_id, FuturesOrder.symbol)
+Index("ix_futures_trades_symbol", FuturesTrade.symbol)

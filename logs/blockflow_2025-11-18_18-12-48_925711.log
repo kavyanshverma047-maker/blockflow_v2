@@ -1,0 +1,33 @@
+2025-11-18 18:12:48.995 | INFO     | app.futures.demo_engine:__init__:87 - Demo engine initialized
+2025-11-18 18:12:49.004 | WARNING  | app.main:<module>:903 - app.auth.auth_router not found, using inline routes
+2025-11-18 18:12:49.004 | WARNING  | app.main:<module>:910 - app.wallet.wallet_router not found, using inline routes
+2025-11-18 18:12:49.004 | WARNING  | app.main:<module>:917 - app.market.market_router not found, using inline routes
+2025-11-18 18:12:49.004 | WARNING  | app.main:<module>:924 - app.admin.admin_router not found, using inline routes
+2025-11-18 18:12:49.006 | WARNING  | app.main:<module>:931 - app.public.public_router not found, using inline routes
+2025-11-18 18:12:49.016 | INFO     | app.main:startup_event:1074 - ================================================================================
+2025-11-18 18:12:49.016 | INFO     | app.main:startup_event:1075 - 🚀 Blockflow Exchange v3.5.1 Starting...
+2025-11-18 18:12:49.016 | INFO     | app.main:startup_event:1076 - Environment: production
+2025-11-18 18:12:49.016 | INFO     | app.main:startup_event:1077 - Demo Mode: ENABLED ⚠️
+2025-11-18 18:12:49.017 | INFO     | app.main:startup_event:1078 - Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-18 18:12:49.017 | INFO     | app.main:startup_event:1079 - ================================================================================
+2025-11-18 18:12:53.654 | INFO     | app.main:startup_event:1085 - ✅ Database connection successful
+2025-11-18 18:12:53.654 | INFO     | app.main:startup_event:1093 - 📊 Demo market price simulator started
+2025-11-18 18:12:53.654 | INFO     | app.main:startup_event:1097 - 🔥 Futures price feed started
+2025-11-18 18:12:53.654 | INFO     | app.main:startup_event:1119 - 🚀 Futures engine linked with price feed
+2025-11-18 18:12:53.654 | INFO     | app.main:startup_event:1121 - ✅ Blockflow Exchange ready
+2025-11-18 18:12:53.654 | INFO     | app.futures.price_feed:start:80 - Price feed started
+2025-11-18 18:14:13.572 | INFO     | app.main:log_request_timing:969 - REQUEST GET /docs completed in 1.0ms
+2025-11-18 18:14:13.832 | INFO     | app.main:log_request_timing:969 - REQUEST GET /openapi.json completed in 9.0ms
+2025-11-18 18:14:50.023 | INFO     | app.main:log_request_timing:969 - REQUEST POST /api/auth/register completed in 5.0ms
+2025-11-18 18:15:29.517 | ERROR    | app.main:register:1224 - REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_demo AS users_is_demo, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-18 18:15:29.775 | INFO     | app.main:log_request_timing:969 - REQUEST POST /api/auth/register completed in 1044.72ms
+2025-11-18 18:18:32.889 | INFO     | app.main:shutdown_event:1125 - 🛑 Blockflow Exchange shutting down...

@@ -1,0 +1,57 @@
+2025-11-18 19:53:32.540 | WARNING  | app.main:<module>:1246 - app.api.trade_router not found, using inline routes
+2025-11-18 19:53:32.540 | WARNING  | app.main:<module>:1249 - app.auth.auth_router not found, using inline routes
+2025-11-18 19:53:32.540 | WARNING  | app.main:<module>:1252 - app.wallet.wallet_router not found, using inline routes
+2025-11-18 19:53:32.540 | WARNING  | app.main:<module>:1255 - app.market.market_router not found, using inline routes
+2025-11-18 19:53:32.540 | WARNING  | app.main:<module>:1258 - app.admin.admin_router not found, using inline routes
+2025-11-18 19:53:32.540 | WARNING  | app.main:<module>:1261 - app.public.public_router not found, using inline routes
+2025-11-18 19:53:32.549 | INFO     | app.main:startup_event:1450 - ================================================================================
+2025-11-18 19:53:32.549 | INFO     | app.main:startup_event:1451 -  Blockflow Exchange v3.5.1 Starting...
+2025-11-18 19:53:32.549 | INFO     | app.main:startup_event:1452 - Environment: production
+2025-11-18 19:53:32.549 | INFO     | app.main:startup_event:1453 - Demo Mode: ENABLED 
+2025-11-18 19:53:32.549 | INFO     | app.main:startup_event:1454 - Database: dpg-d4afm1ili9vc73fh9o5g-a.oregon-postgres.render.com/blockflowv2_db?sslmode=require
+2025-11-18 19:53:32.549 | INFO     | app.main:startup_event:1455 - ================================================================================
+2025-11-18 19:53:37.499 | INFO     | app.main:startup_event:1461 -  Database connection successful
+2025-11-18 19:53:37.499 | INFO     | app.main:startup_event:1470 -  Demo market price simulator started
+2025-11-18 19:53:37.499 | INFO     | app.main:startup_event:1474 -  Futures price feed started
+2025-11-18 19:53:37.499 | INFO     | app.main:startup_event:1496 -  Futures engine linked with price feed
+2025-11-18 19:53:37.499 | INFO     | app.main:startup_event:1498 -  Blockflow Exchange ready
+2025-11-18 19:53:38.714 | INFO     | app.main:log_request_timing:1342 - REQUEST GET /docs completed in 1.0ms
+2025-11-18 19:53:38.977 | INFO     | app.main:log_request_timing:1342 - REQUEST GET /openapi.json completed in 5.52ms
+2025-11-18 19:54:28.691 | ERROR    | app.main:register:1604 - REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'test@test.com', 'username_1': 'testuser', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-18 19:54:29.001 | INFO     | app.main:log_request_timing:1342 - REQUEST POST /api/auth/register completed in 1142.23ms
+2025-11-18 19:54:39.907 | ERROR    | app.main:register:1604 - REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'username_1': 'string', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-18 19:54:40.180 | INFO     | app.main:log_request_timing:1342 - REQUEST POST /api/auth/register completed in 1085.17ms
+2025-11-18 19:54:45.154 | ERROR    | app.main:register:1604 - REGISTER ERROR: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.kyc_status AS users_kyc_status, users.balance_inr AS users_balance_inr, users.locked_inr AS users_locked_inr, users.balance_usdt AS users_balance_usdt, users.locked_usdt AS users_locked_usdt, users.balance_btc AS users_balance_btc, users.locked_btc AS users_locked_btc, users.balance_eth AS users_balance_eth, users.locked_eth AS users_locked_eth, users.created_at AS users_created_at, users.is_active AS users_is_active, users.is_demo AS users_is_demo 
+FROM users 
+WHERE users.email = %(email_1)s OR users.username = %(username_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'username_1': 'string', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-18 19:54:45.448 | INFO     | app.main:log_request_timing:1342 - REQUEST POST /api/auth/register completed in 1108.49ms
+2025-11-18 19:55:04.830 | INFO     | app.main:log_request_timing:1342 - REQUEST POST /api/auth/register completed in 1.0ms
+2025-11-18 19:55:06.897 | INFO     | app.main:log_request_timing:1342 - REQUEST POST /api/auth/register completed in 1.0ms
+2025-11-18 19:55:07.057 | INFO     | app.main:log_request_timing:1342 - REQUEST POST /api/auth/register completed in 1.5ms
+2025-11-18 19:56:41.044 | INFO     | app.main:log_request_timing:1342 - REQUEST GET /docs completed in 1.0ms
+2025-11-18 19:56:41.202 | INFO     | app.main:shutdown_event:1505 -  Blockflow Exchange shutting down...

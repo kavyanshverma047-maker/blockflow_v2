@@ -1,0 +1,2 @@
+2025-11-18 19:15:34.933 | INFO     | app.futures.demo_engine:__init__:87 - Demo engine initialized
+2025-11-18 19:15:34.985 | WARNING  | app.main:<module>:903 - app.auth.auth_router not found, using inline routes
