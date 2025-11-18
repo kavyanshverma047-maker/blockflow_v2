@@ -87,8 +87,24 @@ from app.schemas import UserCreate, UserLogin, UserOut
 from app.core.dependencies import get_db, get_current_user
 from app.futures import futures_router
 
+# ROUTER IMPORTS
+from app.api import trade_router     # if this is your trading router file
+from app.futures import futures_router
+from app.auth import auth_router     # <-- You MUST have this path
+from app.wallet import wallet_router # <-- Wallet router
+from app.market import market_router # <-- Market routes
+from app.admin import admin_router   # <-- Admin routes
+from app.public import public_router # <-- Public stats
 
 
+# Include routers
+app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
+app.include_router(wallet_router, prefix="/api/wallet", tags=["Wallet"])
+app.include_router(trade_router, prefix="/api/trading", tags=["Trading"])
+app.include_router(market_router, prefix="/api/market", tags=["Market"])
+app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
+app.include_router(public_router, prefix="/api/public", tags=["Public"])
+app.include_router(futures_router, prefix="/api/futures", tags=["Futures"])
 
 # ============================================================================
 # CONFIGURATION & SETTINGS
