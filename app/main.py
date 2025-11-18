@@ -901,8 +901,6 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Include USDM Futures router
-app.include_router(futures_router, prefix="/api/futures")
 
 import uuid
 from fastapi import Request
