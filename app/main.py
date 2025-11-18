@@ -1559,6 +1559,10 @@ async def get_trades(
                 "price": t.price,
                 "amount": t.amount,
                 "timestamp": t.executed_at.isoformat()
+            }
+            for t in trades
+        ]
+    }
 # ============================================================================
 # MARKET DATA ROUTES (INLINE FALLBACK)
 # ============================================================================
