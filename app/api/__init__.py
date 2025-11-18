@@ -1,3 +1,1 @@
-from fastapi import APIRouter
-
-router = APIRouter()
+from .trade_router import router as trade_router
